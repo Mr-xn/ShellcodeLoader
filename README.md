@@ -1,6 +1,6 @@
 # ShellcodeLoader
 
-Windows平通用免杀shellcode加载器。
+Windows通用免杀shellcode加载器。
 
 ## 功能特点
 
@@ -82,21 +82,15 @@ C:\>
    
 ## 部分免杀效果展示
 
- **火绒**
-VT检测效果
-[图]
-
- **360**
-[图]
-
- **腾讯电脑管家**
-VT检测效果
-[图]
 
  **Windows Defender**
-VT检测效果
-[图]
+![image6](img/img6.png)
 
- **金山毒霸**
-VT检测效果
-[图]
+ **火绒**
+![image7](img/img7.png)
+
+ **360**
+![image8](img/img8.png)
+
+ **腾讯电脑管家**
+![image9](img/img9.png)
