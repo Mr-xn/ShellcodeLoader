@@ -49,10 +49,14 @@ C:\>
 2. **使用CobaltStrike生成payload.c文件**
 
    1、点击生成payload
-   
+   ![image1](img/img1.png)
+   ![image2](img/img2.png)
 
 3. **将payload.c转换为纯hex编码**
-
+   1、打开第二步所生成的payload.c
+   2、复制**引号内**数据(注意！不要复制整个文件，只需要""双引号内的内容)
+   3、使用CyberChef将数据转换为纯hex
+   ![image3](img/img3.png)
    
 
 4. **LoaderMaker生成新的shellcodeLoader**
