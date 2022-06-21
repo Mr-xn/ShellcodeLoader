@@ -61,6 +61,8 @@ C:\>
    3、使用在线工具[CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Hex('Auto'))将数据转换为纯hex(地址：https://gchq.github.io/CyberChef/#recipe=From_Hex('Auto'))
    ![image3](img/img3.png)
    
+   4、将转换后的数据保存到文件
+   
 
 4. **LoaderMaker生成新的shellcodeLoader**
 
