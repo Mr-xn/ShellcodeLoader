@@ -58,7 +58,7 @@ C:\>
    
    2、复制**引号内**数据(注意！不要复制整个文件，只需要""双引号内的内容)
    
-   3、使用CyberChef将数据转换为纯hex
+   3、使用在线工具CyberChef将数据转换为纯hex(地址：https://gchq.github.io/CyberChef/#recipe=From_Hex('Auto'))
    ![image3](img/img3.png)
    
 
