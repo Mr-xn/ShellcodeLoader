@@ -64,7 +64,7 @@ C:\>
    4、将转换后的数据保存到文件
    
 
-4. **LoaderMaker生成新的shellcodeLoader**
+4. **生成免杀Loader**
 
    参数如下：
    ![image4](img/img4.png)
