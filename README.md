@@ -53,16 +53,30 @@ C:\>
    ![image2](img/img2.png)
 
 3. **将payload.c转换为纯hex编码**
+
    1、打开第二步所生成的payload.c
+   
    2、复制**引号内**数据(注意！不要复制整个文件，只需要""双引号内的内容)
+   
    3、使用CyberChef将数据转换为纯hex
    ![image3](img/img3.png)
    
 
 4. **LoaderMaker生成新的shellcodeLoader**
 
-   xxx
-
+   参数如下：
+   ![image4](img/img4.png)
+      LoaderMaker.exe是生成器
+      
+      download.dat是CyberChef生成的hex文件
+      
+      bypassloader.exe是最终我们生成的免杀shellcode加载器
+   ```
+   LoaderMaker.exe download.dat bypassLoader.exe
+   
+   ```
+   直接执行bypassLoader.exe,上线成功
+   ![image5](img/img5.png)
    
 ## 部分免杀效果展示
 
