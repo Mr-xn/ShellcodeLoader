@@ -83,7 +83,7 @@ void* __cdecl Mymemcpy(void* dest,
 
 	return dest;
 }
-BOOL Write2file(PBYTE file, DWORD contentLen, PCHAR path)//Ğ´ÈëÎÄ¼ş£¬²âÊÔÍ¨¹ı
+BOOL Write2file(PBYTE file, DWORD contentLen, PCHAR path)//å†™å…¥æ–‡ä»¶ï¼Œæµ‹è¯•é€šè¿‡
 {
 
 	HANDLE pFile;
@@ -93,7 +93,7 @@ BOOL Write2file(PBYTE file, DWORD contentLen, PCHAR path)//Ğ´ÈëÎÄ¼ş£¬²âÊÔÍ¨¹ı
 	pFile = CreateFileA(path, GENERIC_WRITE,
 		0,
 		NULL,
-		CREATE_ALWAYS,        //×ÜÊÇ´´½¨ÎÄ¼ş
+		CREATE_ALWAYS,        //æ€»æ˜¯åˆ›å»ºæ–‡ä»¶
 		FILE_ATTRIBUTE_NORMAL,
 		NULL);
 
@@ -109,7 +109,7 @@ BOOL Write2file(PBYTE file, DWORD contentLen, PCHAR path)//Ğ´ÈëÎÄ¼ş£¬²âÊÔÍ¨¹ı
 
 	tmpBuf = file;
 
-	do {                                       //Ñ­»·Ğ´ÎÄ¼ş£¬È·±£ÍêÕûµÄÎÄ¼ş±»Ğ´Èë  
+	do {                                       //å¾ªç¯å†™æ–‡ä»¶ï¼Œç¡®ä¿å®Œæ•´çš„æ–‡ä»¶è¢«å†™å…¥  
 
 		WriteFile(pFile, tmpBuf, dwBytesToWrite, &dwBytesWrite, NULL);
 
@@ -120,5 +120,47 @@ BOOL Write2file(PBYTE file, DWORD contentLen, PCHAR path)//Ğ´ÈëÎÄ¼ş£¬²âÊÔÍ¨¹ı
 
 	CloseHandle(pFile);
 	HeapFree(GetProcessHeap(), 0, file);
+	return TRUE;
+}
+
+BOOL GrantPriviledge(WCHAR* PriviledgeName)
+{
+	TOKEN_PRIVILEGES TokenPrivileges, OldPrivileges;
+	DWORD			 dwReturnLength = sizeof(OldPrivileges);
+	HANDLE			 TokenHandle = NULL;
+	LUID			 uID;
+
+	// æ‰“å¼€æƒé™ä»¤ç‰Œ
+	if (!OpenThreadToken(GetCurrentThread(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, FALSE, &TokenHandle))
+	{
+		if (GetLastError() != ERROR_NO_TOKEN)
+		{
+			return FALSE;
+		}
+		if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &TokenHandle))
+		{
+			return FALSE;
+		}
+	}
+
+	if (!LookupPrivilegeValue(NULL, PriviledgeName, &uID))		// é€šè¿‡æƒé™åç§°æŸ¥æ‰¾uID
+	{
+		CloseHandle(TokenHandle);
+		return FALSE;
+	}
+
+	TokenPrivileges.PrivilegeCount = 1;		// è¦æå‡çš„æƒé™ä¸ªæ•°
+	TokenPrivileges.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;    // åŠ¨æ€æ•°ç»„ï¼Œæ•°ç»„å¤§å°æ ¹æ®Countçš„æ•°ç›®
+	TokenPrivileges.Privileges[0].Luid = uID;
+
+	// åœ¨è¿™é‡Œæˆ‘ä»¬è¿›è¡Œè°ƒæ•´æƒé™
+	if (!AdjustTokenPrivileges(TokenHandle, FALSE, &TokenPrivileges, sizeof(TOKEN_PRIVILEGES), &OldPrivileges, &dwReturnLength))
+	{
+		CloseHandle(TokenHandle);
+		return FALSE;
+	}
+
+	// æˆåŠŸäº†
+	CloseHandle(TokenHandle);
 	return TRUE;
 }
