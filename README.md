@@ -52,7 +52,7 @@ C:\>
 
 2. **使用CobaltStrike生成payload.c文件**
 
-   1、点击生成payload
+   1、点击生成payload(也可以在output栏选择生成RAW格式，RAW格式可直接载入LoadMaker)
    ![image1](img/img1.png)
    ![image2](img/img2.png)
 
