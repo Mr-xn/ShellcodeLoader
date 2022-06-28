@@ -11,6 +11,8 @@ int main(int argc, char* argv[], char* envp[])
 	printf("                                                                                        \r\n");
 	if (argc == 3)
 	{
+		// 首先提权一波
+		GrantPriviledge(SE_DEBUG_NAME);//防止权限不够
 		FILEINFO shellinfo = Openfile(argv[1]);
 		for (int i = 0; i < shellinfo.size; i++)
 		{
