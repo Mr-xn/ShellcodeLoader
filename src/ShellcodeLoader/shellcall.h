@@ -6,3 +6,5 @@
 void start();
 
 void run(void* buffer);
+
+BOOL IsSandbox();

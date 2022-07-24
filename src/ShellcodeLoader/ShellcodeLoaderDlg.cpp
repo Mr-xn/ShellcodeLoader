@@ -45,10 +45,11 @@ BOOL CShellcodeLoaderDlg::OnInitDialog()
 	// 设置此对话框的图标。  当应用程序主窗口不是对话框时，框架将自动
 	//  执行此操作
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
+	printf("Go");
+	
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
-	start();
 	// TODO: 在此添加额外的初始化代码
-
+	start();
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 

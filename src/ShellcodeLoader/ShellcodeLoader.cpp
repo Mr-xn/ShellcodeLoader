@@ -101,5 +101,5 @@ BOOL CShellcodeLoaderApp::InitInstance()
 void CShellcodeLoaderApp::OnBnClickedButton1()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	MessageBoxW(NULL,L"nothing", L"nothing",MB_OK);
+	MessageBoxW(NULL,L"Button", L"Button",MB_OK);
 }
