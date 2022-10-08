@@ -1,6 +1,10 @@
 # ShellcodeLoader
 
 Windows通用免杀shellcode加载器。
+## V2.1
+![image1](img/img10.png)
+更新了shellcode执行方式，增添了文件伪装描述信息，已通过测试，可免杀主流防病毒软件；
+PS：我们时刻关注着该Loader项目的可用性，当发现其被杀软查杀时，我们将在第一时间完成更新；
 ## V2.0
 增加了杀软模拟环境监测功能，并更改了shellcode执行位置，以此来绕过AV；
 
