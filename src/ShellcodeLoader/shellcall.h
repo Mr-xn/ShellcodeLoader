@@ -1,6 +1,7 @@
 
 #include <windows.h>
-#define DATA_SIZE 27136
+
+#define DATA_SIZE 3000
 
 
 void start();
